@@ -1,4 +1,7 @@
 //DOM Render Functions
+document.addEventListener('DOMContentLoaded', () => {
+    renderOneDog();
+})
 function renderOneDog(dog){
 
     // Build Animal
@@ -12,7 +15,7 @@ function renderOneDog(dog){
             <h6>${dog.breed}</h6>
             <h7>${dog.gender}</h7>
             <p>
-                $<span class="donation-count">${dog.donations}</span> Donated
+                $<span class="adoptions">${dog.adoptions}</span> Adopt Dog
             <p>
             <p>${dog.description}</p>
         </div>
@@ -29,7 +32,8 @@ document.querySelector('dog-list').appendChild(card)
 //Fetch requests
 //Get fetch for all dog resources
 function getAllDogs(){
-    fetch()
+    curl -H "Authorization: Bearer KzFybG9AKp7ULb52h72QUJaF9bTQ6UxnO2f52z0BrXzW4mg7DA"; 
+    fetch(https://api.petfinder.com/v2)
     .then(res => res.json())
     .then(animalData => animalData.forEach(dog => renderOneDog(dog)))
 }
@@ -37,6 +41,11 @@ function getAllDogs(){
 //Initial Render
 //Get data and render dogs to the DOM
 function initialize(){
+    getAllDogs()
     animalData.forEach(dog => renderOneDog(dog))
 }
 initialize()
+
+//Button Responses
+document.querySelector('#like').addEventListener('click', () => like('I like this dog'))
+document.querySelector('#adoptdog').addEventListener('click', () => adoptdog('I want to bring this dog home'))
