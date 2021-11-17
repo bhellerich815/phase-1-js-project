@@ -32,8 +32,15 @@ document.querySelector('dog-list').appendChild(card)
 //Fetch requests
 //Get fetch for all dog resources
 function getAllDogs(){
-    curl -H "Authorization: Bearer KzFybG9AKp7ULb52h72QUJaF9bTQ6UxnO2f52z0BrXzW4mg7DA"; 
-    fetch(https://api.petfinder.com/v2)
+    var authKey = "KzFybG9AKp7ULb52h72QUJaF9bTQ6UxnO2f52z0BrXzW4mg7DA"
+    var url = 'https://api.petfinder.com/v2'
+    return fetch(url,{
+        method: 'GET',
+        headers: {
+            "Authorization": authKey,
+            'Content-Type': 'application/json'
+        }
+    })
     .then(res => res.json())
     .then(animalData => animalData.forEach(dog => renderOneDog(dog)))
 }
