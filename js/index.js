@@ -1,7 +1,25 @@
+//Event Listeners
+document.querySelector('#animal-form').addEventListener('submit', handleSubmit)
+
+//Event Handlers
+function handleSubmit(e){
+    e.preventDefault()
+    let dogObject = {
+        name:e.target.name.value,
+        videoURL:e.target.video_url.value,
+        age:e.target.age.value,
+        breed:e.target.breed.value,
+        gender:e.target.gender.value,
+        description:e.target.description.value
+    }
+    renderOneDog(dogObject)
+}
+
+
 //DOM Render Functions
-document.addEventListener('DOMContentLoaded', () => {
-    renderOneDog();
-})
+// document.addEventListener('DOMContentLoaded', () => {
+//     renderOneDog();
+// })
 function renderOneDog(dog){
 
     // Build Animal
