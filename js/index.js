@@ -4,6 +4,7 @@ document.querySelector('#animal-form').addEventListener('submit', handleSubmit)
 //Event Handlers
 function handleSubmit(e){
     e.preventDefault()
+    console.log(e.target)
     let dogObject = {
         name:e.target.name.value,
         videoURL:e.target.video_url.value,
@@ -15,13 +16,8 @@ function handleSubmit(e){
     renderOneDog(dogObject)
 }
 
-
 //DOM Render Functions
-// document.addEventListener('DOMContentLoaded', () => {
-//     renderOneDog();
-// })
 function renderOneDog(dog){
-
     // Build Animal
     let card = document.createElement('li')
     card.className = 'card'
@@ -44,32 +40,33 @@ function renderOneDog(dog){
     `
 
 //Add animal card to DOM
-document.querySelector('dog-list').appendChild(card)
+document.querySelector('animal-list').appendChild(card)
 }
 
 //Fetch requests
 //Get fetch for all dog resources
 function getAllDogs(){
-    var authKey = "KzFybG9AKp7ULb52h72QUJaF9bTQ6UxnO2f52z0BrXzW4mg7DA"
-    var url = 'https://api.petfinder.com/v2'
-    return fetch(url,{
+    var xAPIKey = 'fe4eff12-acfa-4723-8956-d003f09be2e1'
+    var url = 'https://api.thedogapi.com/images/search'
+    return fetch (url,{
         method: 'GET',
         headers: {
-            "Authorization": authKey,
+            "Authorization": xAPIKey,
             'Content-Type': 'application/json'
         }
     })
     .then(res => res.json())
     .then(animalData => animalData.forEach(dog => renderOneDog(dog)))
+    .catch(error => console.log)
 }
 
 //Initial Render
 //Get data and render dogs to the DOM
-function initialize(){
-    getAllDogs()
-    animalData.forEach(dog => renderOneDog(dog))
-}
-initialize()
+// function initialize(){
+//     getAllDogs()
+//     animalData.forEach(dog => renderOneDog(dog))
+// }
+// initialize()
 
 //Button Responses
 document.querySelector('#like').addEventListener('click', () => like('I like this dog'))
