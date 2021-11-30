@@ -12,11 +12,11 @@
 
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-        <title>Like and Love Dog Breeds</title>
+        <title>Dog Liker</title>
     </head>
     <body>
         <header id="menu">
-            <h1>Like or Love - Dog Breeds</h1>
+            <h1>Dog Liker</h1>
         </header>
         <div class="container">
             <form id="animal-form">
@@ -24,14 +24,9 @@
                 <input type="text" id="name" name="name" />
                 <label for="name">Image URL</label>
                 <input type="text" id="image_url" name="image_url" />
-                <label for="name">Breed Group</label>
-                <input type="text" id="breed_group" name="breed_group" />
-                <label for="name">Bred For</label>
-                <input type="text" id="bred_for" name="bred_for" />
-                <label for="name">Temperament</label>
-                <input type="text" id="temperament" name="temperament" />
-                <button type="submit">Like</button>
-                <button type="submit">Love</button>
+                <label for="description">Description</label>
+                <textarea id="description" name="description"></textarea>
+                <button type="submit">Search</button>
             </form>
             <ul id="animal-list" class="cards">
                 <!--- Dogs here -->
