@@ -8,10 +8,11 @@ function renderOneDog(dog){
     document.getElementById('bred_for').value = dog.breeds[0].bred_for
     document.getElementById("temperament").value = dog.breeds[0].temperament
     let card = document.createElement('div')
+    let img = document.createElement('img')
+    img.src = dog.url
+    card.appendChild(img)
     card.className = 'card'
-    card.innerHTML = `
-         <image src="${dog.url}">
-    `
+    
     //Add animal card to DOM
     document.querySelector('#animals').appendChild(card)
 }
@@ -43,7 +44,6 @@ function getDogs(){
 function initialize(){
     getDogs()
     console.log('initialize')
-    //images.forEach(dog => renderOneDog(dog))
 }
 
 //Button Responses
