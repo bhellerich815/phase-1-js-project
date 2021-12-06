@@ -18,4 +18,4 @@
 
 ## Credits
 
-### Thanks to The Dog API for the use of the photos, breed names and descriptions
+### Thanks to The Dog API for the use of the photos, breed names and other information

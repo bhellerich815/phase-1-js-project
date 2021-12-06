@@ -1,0 +1,11 @@
+img {
+    width: 400px;
+    height: 400px;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.card {
+    height: 400px;
+    width: 400px;
+}
