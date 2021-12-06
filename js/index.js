@@ -1,81 +1,52 @@
-//Event Listeners
-// document.querySelector('#animal-form').addEventListener('submit', handleSubmit)
-
-//Event Handlers
-// function handleSubmit(e){
-//     e.preventDefault()
-//     console.log(e.target)
-//     let dogObject = {
-//         name:e.target.name.value,
-//         imageURL:e.target.image_url.value,
-//         breedGroup:e.target.breed_group.value,
-//         bredFor:e.target.bred_for.value,
-//         temperament:e.target.temperament.value,
-//     }
-//     renderOneDog(dogObject)
-// }
-
 //DOM Render Functions
 function renderOneDog(dog){
     // Build Animal
-    let card = document.createElement('li')
+    console.log('dogs: ', dog)
+    if (!dog && !dog.breeds) return null
+    console.log('below conditional')
+    document.getElementById("name").value = dog.breeds[0].name
+    document.getElementById('bred_for').value = dog.breeds[0].bred_for
+    document.getElementById("temperament").value = dog.breeds[0].temperament
+    let card = document.createElement('div')
     card.className = 'card'
     card.innerHTML = `
-         <image src="${imageURL}">
-        <div class= "buttons">
-            <button> Like </button>
-            <button> Dislike </button>
-        </div>
+         <image src="${dog.url}">
     `
     //Add animal card to DOM
-    document.querySelector('animal-list').appendChild(card)
+    document.querySelector('#animals').appendChild(card)
 }
 
 //Fetch requests
 //Get fetch for all dog resources
 
-var myHeaders = new Headers();
-myHeaders.append("Content-Type", "application/json");
-myHeaders.append("x-api-key", "fe4eff12-acfa-4723-8956-d003f09be2e1")
-
-// var formData = new FormData();
-
-var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    // body: formdata,
-    redirect: 'follow'
-};
-
-fetch("https://api.thedogapi.com/v1/images/search", requestOptions)
-    .then(response => response.text())
-    .then(res => res.json)
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
-
-// function getAllDogs(){
-//     var xAPIKey = 'fe4eff12-acfa-4723-8956-d003f09be2e1'
-//     var url = 'https://api.thedogapi.com/v1/images/search'
-//     return fetch (url,{
-//         method: 'GET',
-//         headers: {
-//             "Authorization": xAPIKey,
-//             'Content-Type': 'application/json'
-//         }
-//     })
-//     .then(res => res.json())
-//     .then(animalData => animalData.forEach(dog => renderOneDog(dog)))
-//     .catch(error => console.log)
-
+function getDogs(){
+    console.log("dogs function")
+    var xAPIKey = 'fe4eff12-acfa-4723-8956-d003f09be2e1'
+    var url = 'https://api.thedogapi.com/v1/images/search'
+    return fetch (url,{
+        method: 'GET',
+        headers: {
+            "Authorization": xAPIKey,
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json())
+    .then(images => {
+        console.log('images: ', images)
+        images.forEach(dog => renderOneDog(dog))
+    })
+    .catch(error => console.log("error: ", error))
+}
 
 //Initial Render
 //Get data and render dogs to the DOM
-// function initialize(){
-//     getAllDogs()
-//     animalData.forEach(dog => renderOneDog(dog))
-// }
-// initialize()
+function initialize(){
+    getDogs()
+    console.log('initialize')
+    //images.forEach(dog => renderOneDog(dog))
+}
 
 //Button Responses
-// document.querySelector('#like').addEventListener('click', () => like('I like this dog'))
-// document.querySelector('#dislike').addEventListener('click', () => dislike('I dislike this dog'))
+document.querySelector('#like').addEventListener('click', () => alert('I like this dog'))
+document.querySelector('#dislike').addEventListener('click', () => alert('I dislike this dog'))
+initialize()
