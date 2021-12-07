@@ -46,7 +46,11 @@ function initialize(){
     console.log('initialize')
 }
 
-//Button Responses
+//Button Responses & Event Listeners
 document.querySelector('#like').addEventListener('click', () => alert('I like this dog'))
 document.querySelector('#dislike').addEventListener('click', () => alert('I dislike this dog'))
 initialize()
+
+document.addEventListener("DOMContentLoaded", function(){
+    console.log("The DOM has loaded")
+});
