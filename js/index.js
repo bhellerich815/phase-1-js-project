@@ -51,6 +51,8 @@ document.querySelector('#like').addEventListener('click', () => alert('I like th
 document.querySelector('#dislike').addEventListener('click', () => alert('I dislike this dog'))
 initialize()
 
+document.querySelector('#temperament').addEventListener('mouseover', () => alert('I want one of these dogs!'))
+
 document.addEventListener("DOMContentLoaded", function(){
     console.log("The DOM has loaded")
 });
